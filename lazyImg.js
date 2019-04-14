@@ -3,7 +3,7 @@ class LazyImg {
   constructor(el) {
     this.imgArr = [];
     if (el) {
-      this.imgArr = document.querySelectorAll(el);
+      this.imgArr = Array.from(document.querySelectorAll(el));
     }
     this.init();
   }
@@ -26,7 +26,7 @@ class LazyImg {
     let typeTop = window.innerHeight;
     typeTop >= elTop && this.loadImg(el, index);
   }
-  loadImg(el) {
+  loadImg(el, index) {
     el.src = el.dataset.src;
     this.imgArr.splice(index, 1);
   }

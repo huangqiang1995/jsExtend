@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <head>
+       
+    </head>
+    <div class="u1">
+      <div class="wrapper">
+        <div class="main">
+          <div class="header">
+            <input placeholder="" />
+          </div>
+          <div class="content"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+<script>
+  const mainDom = document.getElementsByClassName('main')[0];
+  const topDom = document.getElementsByClassName('header')[0];
+  const ctxDom = document.getElementsByClassName('content')[0];
+  const maxHeight = 500;
+  const minHeight = 200;
+  let topHeight,mainScrollNum;
+  mainDom.onscroll = ()=>{
+    mainScrollNum = mainDom.scrollTop;
+    topHeight = maxHeight - mainScrollNum > minHeight ? maxHeight - mainScrollNum : minHeight;
+    topDom.style.top = mainScrollNum+'px';
+    topDom.style.height = topHeight + 'px';
+    ctxDom.style['margin-top'] = topHeight + 'px';
+  }
+</script>
+<style>
+  *{
+    margin:0;
+    padding:0;
+  }
+  html,body{
+    height:100%;
+  }
+  .u1,.wrapper,.main{
+    width:100%;
+    height:100%;
+  }
+  .main{
+    overflow: auto;
+    position: relative;
+  }
+  .header{
+    width:100%;
+    height:500px;
+    /* background:black; */
+    background: skyblue;
+    position: absolute;
+    top:0;
+  }
+  .content{
+    width:100%;
+    height:6000px;
+    background: red;
+  }
+
+</style>
